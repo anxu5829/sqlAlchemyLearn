@@ -30,7 +30,7 @@
 
 - 操作如下：
 ```
-docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql/mysql-server
 ```
 - 注：
   - name 是容器名称
@@ -76,17 +76,12 @@ docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysq
   ```
     show databases;
     use mysql;
-    GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+    update user set host = '%' where user = 'root';
     FLUSH PRIVILEGES;
     select host ,user from user;
 
   ```
 - 确认root对应的的host是'%'即可
-- 重启mysql
-  ```
-    yum install service
-    service mysqld restart
-  ```
 
 ### step 7 : 从本地连接数据库：
 - 注意逻辑：
@@ -100,3 +95,5 @@ docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysq
   - password : 123456
 
 - 测试连接即可
+
+### 至此，可以成功连接数据库
