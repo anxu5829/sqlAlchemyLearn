@@ -38,7 +38,7 @@ docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysq
   - MYSQL_ROOT_PASSWORD 用于设定默认执行
   - -d 表示守护进程
 
-### step 5 ： 检查default 是否成功开放53306
+### step 4 ： 检查default 是否成功开放53306
 
 - 1 检查容器状态
 
@@ -61,7 +61,7 @@ docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysq
     ```
   - 看到listen则成功
 
-### step 6 : 更改容器中数据库的远程访问权限
+### step 5 : 更改容器中数据库的远程访问权限
 - 进入docker
   ```
     docker ps
@@ -83,7 +83,7 @@ docker run --name xuan-mysql -p 53306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysq
   ```
 - 确认root对应的的host是'%'即可
 
-### step 7 : 从本地连接数据库：
+### step 6 : 从本地连接数据库：
 - 注意逻辑：
   - docker tools 在本地建立了一台机器default
   - 机器的局域网ip为192.168.99.100
